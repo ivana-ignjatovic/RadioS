@@ -39,7 +39,8 @@ class LogInFragment : Fragment() {
             Log.d("Log user",user.toString())
             if(user.username.toString()==tv_username.text.toString() && user.password.toString()==tv_password.text.toString())
                 {
-                    (activity as MainActivity).showFragment(SignInFragment(), false)
+                    (activity as MainActivity).showFragment(RadioListFragment(), false)
+
                 }
             else{
                     Toast.makeText(context!!, "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
