@@ -25,7 +25,7 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val signInBtn: Button = view.findViewById(R.id.buttonSignIn)
         signInBtn.setOnClickListener() {
-            (activity as MainActivity).showFragment(SignInFragment(), false)
+            (activity as MainActivity).showFragment(SignUpFragment(), false)
         }
         val btn_login = view.findViewById<Button>(R.id.btnlogin)
         val tv_username = view.findViewById<EditText>(R.id.enterUsername)

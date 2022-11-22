@@ -10,5 +10,6 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(brewery:Brewery){
         itemView.TVname.text=brewery.name
+
     }
 }
