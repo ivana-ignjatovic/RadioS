@@ -7,8 +7,8 @@ data class OpeningTime(
 )
 
 data class Service(val name: String)
-
-data class Address(
+/*
+data class Country(
     val street: String,
     val number: Int,
     val zipCode: Int,
@@ -27,16 +27,18 @@ data class Review(
     val description: String,
     val reviewName: String
 )
-
-data class Brewery(
-    val id: Int,
-    val image: String,
+*/
+data class Radio(
+    //val id: String,
     val name: String,
-    val address: Address,
-    val description: String? = null,
-    val openingTimes: List<OpeningTime>? = null,
-    val services: List<Service>? = null,
-    val latLong: LatLng? = null,
-    val reviews: List<Review>? = null
+    val country: String,
+    val favicon: String,
+    /*val stream: URL,
+    val homepage: String,
+
+    val country: String,
+    val state: String,
+    val language: String,*/
+
 )
 

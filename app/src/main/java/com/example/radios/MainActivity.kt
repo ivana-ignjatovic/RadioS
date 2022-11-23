@@ -1,14 +1,15 @@
 package com.example.radios
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showFragment(LogInFragment(),true)
+        //showFragment(RadioListFragment(),true)
 
     }
     fun showFragment(fragment: Fragment, addAsRoot:Boolean= false){

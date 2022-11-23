@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="155dp"
     android:layout_marginHorizontal="16dp"
@@ -16,10 +17,10 @@
 
     <TextView
         android:id="@+id/TVname"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="375dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:text="Naziv stanice"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -29,4 +30,26 @@
 
 
         />
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Drzava"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/Radioimage"
+        android:layout_width="99dp"
+        android:layout_height="92dp"
+        android:layout_marginEnd="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="63dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/TVname" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

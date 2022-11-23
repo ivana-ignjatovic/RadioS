@@ -1,13 +1,13 @@
 package com.example.radios.recycler
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.radios.R
-import com.example.radios.model.Brewery
+import com.example.radios.model.Radio
 
 
-class RadioRVAdapter(private val brewerys: List<Brewery>) :
+class RadioRVAdapter(private val radios: List<Radio>) :
     RecyclerView.Adapter<RadioRVViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioRVViewHolder =
         RadioRVViewHolder(
@@ -15,9 +15,9 @@ class RadioRVAdapter(private val brewerys: List<Brewery>) :
         )
 
     override fun onBindViewHolder(holder: RadioRVViewHolder, position: Int) {
-        holder.bind(brewerys[position])
+        holder.bind(radios[position])
     }
 
-    override fun getItemCount() = brewerys.size
+    override fun getItemCount() = radios.size
 
 }

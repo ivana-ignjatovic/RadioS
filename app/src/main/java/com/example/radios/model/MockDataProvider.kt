@@ -4,22 +4,21 @@ object MockDataProvider {
 
 
 
-    fun getBreweryList(): List<Brewery> {
-        val breweries = mutableListOf<Brewery>()
+  /*  fun getRadioList(): List<Radio> {
+        val radios = mutableListOf<Radio>()
 
         for (i in 1..20) {
-            val brewery = Brewery(
-                i,
-                "http://www.exceptionalapps.net/androidkurs/brlo.jpg",
+            val radio = Radio(
+                i.toString(),
                 "Radio $i",
-                Address("Schöneberger Straße", i, i, "Berlin")
-            )
-            breweries.add(brewery)
-        }
-        return breweries
-    }
 
-    fun getBreweryDetails(): Brewery {
+            )
+            radios.add(radio)
+        }
+        return radios
+    }*/
+
+  /* fun getBreweryDetails(): Brewery {
         val openingTimes = mutableListOf<OpeningTime>()
         val reviews = mutableListOf<Review>()
         val services = mutableListOf<Service>()
@@ -52,6 +51,5 @@ object MockDataProvider {
             services,
             LatLng(48.12987, 11.569799),
             reviews
-        )
+        )*/
     }
-}
