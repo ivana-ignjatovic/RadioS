@@ -1,13 +1,13 @@
-package com.example.radios.recycler
+package com.example.radios.radioslist.recycler
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.example.radios.R
-import com.example.radios.model.Radio
+import com.example.radios.base.model.Radio
 
 
-class RadioRVAdapter(private val radios: List<Radio>) :
+class RadioRVAdapter(private val radios: List<Radio>, private val onItemClicked:()->Unit) :
     RecyclerView.Adapter<RadioRVViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioRVViewHolder =
         RadioRVViewHolder(
@@ -15,7 +15,7 @@ class RadioRVAdapter(private val radios: List<Radio>) :
         )
 
     override fun onBindViewHolder(holder: RadioRVViewHolder, position: Int) {
-        holder.bind(radios[position])
+        holder.bind(radios[position],onItemClicked)
     }
 
     override fun getItemCount() = radios.size

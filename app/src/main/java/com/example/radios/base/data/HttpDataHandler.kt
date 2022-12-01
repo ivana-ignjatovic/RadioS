@@ -1,4 +1,4 @@
-package com.example.radios.data
+package com.example.radios.base.data
 
 import java.io.BufferedInputStream
 import java.io.BufferedReader
@@ -12,7 +12,7 @@ sealed class  Result<out T>{
 
 object HttpDataHandler {
    // private const val RADIO_TOKEN ="11d3b0ca91msh58d60edd5ae7edep16aed7jsnc68288202283"
-    fun getResponse(urlString: String):Result<String>{
+    fun getResponse(urlString: String): Result<String> {
         try{
             val url = URL(urlString)
             val urlConnection = url.openConnection() as HttpURLConnection
@@ -34,7 +34,7 @@ object HttpDataHandler {
                 val string = builder.toString()
                 urlConnection.disconnect()
                 
-                return  Result.Success(string)
+                return Result.Success(string)
                 
             }
             return Result.Error(Exception("Error occured  - Response code: ${urlConnection.responseCode}"))

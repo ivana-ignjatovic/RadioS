@@ -1,7 +1,6 @@
-package com.example.radios
+package com.example.radios.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.radios.R
+import com.example.radios.base.DBHelper
+import com.example.radios.base.MainActivity
+import com.example.radios.radioslist.view.RadioListFragment
 
 
 class LogInFragment : Fragment() {
@@ -34,7 +38,7 @@ class LogInFragment : Fragment() {
 
         btn_login.setOnClickListener() {
 
-            val db = DBHelper(context!!, null)
+            val db = DBHelper(requireContext(), null)
             val user = db.getUserById(tv_username.text.toString())
             Log.d("Log user",user.toString())
             if(user.username.toString()==tv_username.text.toString() && user.password.toString()==tv_password.text.toString())
@@ -43,7 +47,7 @@ class LogInFragment : Fragment() {
 
                 }
             else{
-                    Toast.makeText(context!!, "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
                 }
             }
 

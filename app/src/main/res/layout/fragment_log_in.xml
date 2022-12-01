@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="@color/cardview_dark_background"
-    tools:context=".MainActivity">
+    tools:context=".base.MainActivity">
 
     <!--    android:background="@drawable/morning_air_radio_stream_coffee_microphone"-->
 

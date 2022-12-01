@@ -1,5 +1,5 @@
-package com.example.radios
-import  com.example.radios.model.Radio
+package com.example.radios.radioslist.view
+import  com.example.radios.base.model.Radio
 
 sealed class RadioListViewState {
 

@@ -1,7 +1,7 @@
-package com.example.radios.data
+package com.example.radios.base.data
 
 import android.util.Log
-import com.example.radios.model.Radio
+import com.example.radios.base.model.Radio
 import org.json.JSONArray
 import org.json.JSONException
 
@@ -21,8 +21,9 @@ object RadioParser {
                // val id = jsonRadio.getString("stationuuid")
                 val name = jsonRadio.getString("name")
                 val country = jsonRadio.getString("country")
-                val favicon = jsonRadio.getString("favicon")
-                val radio = Radio(name,country,favicon)
+                //val favicon = jsonRadio.getString("favicon")
+                val stream = jsonRadio.getString("url")
+                val radio = Radio(name,country,stream)
                 radios.add(radio)
             }
         }catch(e:JSONException){

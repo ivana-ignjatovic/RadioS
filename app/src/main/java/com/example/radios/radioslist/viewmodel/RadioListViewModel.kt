@@ -1,9 +1,9 @@
-package com.example.radios.viewmodel
+package com.example.radios.radioslist.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.radios.RadioListViewState
+import com.example.radios.radioslist.view.RadioListViewState
 
 
 class RadioListViewModel : ViewModel() {

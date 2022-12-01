@@ -1,4 +1,4 @@
-package com.example.radios
+package com.example.radios.radioslist.view
 
 import android.os.Bundle
 import android.util.Log
@@ -6,15 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.radios.data.HttpDataHandler
-import com.example.radios.data.RadioParser
-import com.example.radios.model.Radio
-import com.example.radios.recycler.RadioRVAdapter
-import com.example.radios.viewmodel.RadioListViewModel
+import com.example.radios.R
+import com.example.radios.base.ICoordinator
+import com.example.radios.base.data.HttpDataHandler
+import com.example.radios.base.data.RadioParser
+import com.example.radios.base.data.Result
+import com.example.radios.base.model.Radio
+import com.example.radios.radioslist.recycler.RadioRVAdapter
+import com.example.radios.radioslist.viewmodel.RadioListViewModel
 import kotlinx.android.synthetic.main.fragment_radio_list.*
-
 class RadioListFragment : Fragment() {
-lateinit var  viewModel :RadioListViewModel
+lateinit var  viewModel : RadioListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,9 @@ lateinit var  viewModel :RadioListViewModel
         }
     }*/
     private fun setupRecyclerView(radios: List<Radio>){
-        radiolist.adapter=RadioRVAdapter(radios)
+        radiolist.adapter= RadioRVAdapter(radios){
+            (activity as ICoordinator).showDetailsFragment()
+        }
 
 
     }
@@ -55,8 +59,8 @@ lateinit var  viewModel :RadioListViewModel
     private fun getRadios(){
 
         val thread = Thread(){
-            val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/ME")
-            if (response is com.example.radios.data.Result.Success){
+            val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/RS")
+            if (response is Result.Success){
                 //Log.d("response", response.data)
                 val radios = RadioParser.parse(response.data)
 

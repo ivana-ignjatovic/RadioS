@@ -1,10 +1,11 @@
-package com.example.radios
+package com.example.radios.base
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.radios.base.model.MUser
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :

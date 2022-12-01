@@ -1,4 +1,4 @@
-package com.example.radios
+package com.example.radios.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.radios.base.model.MUser
+import com.example.radios.R
+import com.example.radios.base.DBHelper
+import com.example.radios.base.MainActivity
 
 class SignUpFragment : Fragment() {
 

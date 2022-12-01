@@ -1,4 +1,4 @@
-package com.example.radios.model
+package com.example.radios.base.model
 
 object MockDataProvider {
 

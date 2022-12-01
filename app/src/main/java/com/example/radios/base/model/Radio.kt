@@ -1,4 +1,4 @@
-package com.example.radios.model
+package com.example.radios.base.model
 
 data class OpeningTime(
     val day: Int,
@@ -32,9 +32,9 @@ data class Radio(
     //val id: String,
     val name: String,
     val country: String,
-    val favicon: String,
-    /*val stream: URL,
-    val homepage: String,
+    //val favicon: String,
+    val stream: String,
+    /*val homepage: String,
 
     val country: String,
     val state: String,
