@@ -29,7 +29,7 @@ data class Review(
 )
 */
 data class Radio(
-    //val id: String,
+    val id: String,
     val name: String,
     val country: String,
     //val favicon: String,
@@ -41,4 +41,5 @@ data class Radio(
     val language: String,*/
 
 )
+
 

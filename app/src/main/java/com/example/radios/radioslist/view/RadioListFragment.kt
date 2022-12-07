@@ -1,7 +1,6 @@
 package com.example.radios.radioslist.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,11 +68,12 @@ lateinit var  viewModel : RadioListViewModel
                 }
 
 
-                Log.d("UserLog","Radios receivde ${radios}")
+                //Log.d("UserLog","Radios receivde ${radios}")
             }
 
         }
        thread.start()
     }
+
 
 }

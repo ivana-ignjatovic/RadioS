@@ -17,8 +17,8 @@ object MockDataProvider {
         }
         return radios
     }*/
-
-  /* fun getBreweryDetails(): Brewery {
+/*
+   fun getBreweryDetails(): Brewery {
         val openingTimes = mutableListOf<OpeningTime>()
         val reviews = mutableListOf<Review>()
         val services = mutableListOf<Service>()
