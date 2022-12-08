@@ -1,6 +1,7 @@
 package com.example.radios.radioslist.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,10 @@ import com.example.radios.base.model.Radio
 import com.example.radios.radioslist.recycler.RadioRVAdapter
 import com.example.radios.radioslist.viewmodel.RadioListViewModel
 import kotlinx.android.synthetic.main.fragment_radio_list.*
+
 class RadioListFragment : Fragment() {
 lateinit var  viewModel : RadioListViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,37 +34,27 @@ lateinit var  viewModel : RadioListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         getRadios()
 
      }
-   /* private fun bindFromViewModel() {
 
-        viewModel.state.observe(viewLifecycleOwner) { state ->
-
-            progressBar.isVisible = state is Processing
-
-            when (state) {
-                //is DataReceived -> setUpRecyclerView(state.breweries)
-                is ErrorReceived -> showError(state.message)
-            }
-        }
-    }*/
     private fun setupRecyclerView(radios: List<Radio>){
-        radiolist.adapter= RadioRVAdapter(radios){
-            (activity as ICoordinator).showDetailsFragment()
+        radiolist.adapter= RadioRVAdapter(radios){radio ->
+            (activity as ICoordinator).showDetailsFragment(radio)
         }
-
-
+        radiolist.adapter= RadioRVAdapter(radios){radio ->
+            (activity as ICoordinator).showDetailsFragment(radio)
+        }
     }
 
     private fun getRadios(){
 
         val thread = Thread(){
-            val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/RS")
+            val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/MG")
             if (response is Result.Success){
-                //Log.d("response", response.data)
+                Log.d("response", response.data)
                 val radios = RadioParser.parse(response.data)
+
 
                 activity?.runOnUiThread(){
                     setupRecyclerView(radios)

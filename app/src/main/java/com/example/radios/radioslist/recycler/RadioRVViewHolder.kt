@@ -9,14 +9,15 @@ import kotlinx.android.synthetic.main.item_radio.view.*
 class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
-    fun bind(radio: Radio, onItemCLicked:()-> Unit) {
+    fun bind(radio: Radio, onItemCLicked:(String)-> Unit) {
+
         var mediaPlayer: android.media.MediaPlayer
         mediaPlayer = android.media.MediaPlayer()
         itemView.TVname.text = radio.name
         itemView.country.text = radio.country
-        itemView.setOnClickListener { onItemCLicked.invoke() }
+        itemView.setOnClickListener { onItemCLicked.invoke(radio.id) }
 //        if (radio.favicon != "") {
-//            Glide.with(itemView).load(radio.favicon).into(itemView.Radioie)
+        // Glide.with(itemView).load(radio.favicon).into(itemView.radiolist.favicon)
 //        }
         val audioUrl=radio.stream
         itemView.btnplay.setOnClickListener() {
@@ -40,6 +41,8 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
         }
 
-
     }
+
+
+
 }

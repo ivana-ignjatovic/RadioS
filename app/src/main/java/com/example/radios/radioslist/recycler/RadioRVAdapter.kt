@@ -7,7 +7,7 @@ import com.example.radios.R
 import com.example.radios.base.model.Radio
 
 
-class RadioRVAdapter(private val radios: List<Radio>, private val onItemClicked:()->Unit) :
+class RadioRVAdapter(private val radios: List<Radio>, private val onItemClicked:(String)->Unit) :
     RecyclerView.Adapter<RadioRVViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioRVViewHolder =
         RadioRVViewHolder(
@@ -15,9 +15,12 @@ class RadioRVAdapter(private val radios: List<Radio>, private val onItemClicked:
         )
 
     override fun onBindViewHolder(holder: RadioRVViewHolder, position: Int) {
-        holder.bind(radios[position],onItemClicked)
+        holder.bind(radios[position], onItemClicked)
     }
 
-    override fun getItemCount() = radios.size
 
+    override fun getItemCount() = radios.size
 }
+
+
+

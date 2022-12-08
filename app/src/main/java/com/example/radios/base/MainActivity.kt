@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), ICoordinator {
         transaction.commit()
     }
 
-    override fun showDetailsFragment() {
-         showFragment(RadiosDetails())
+    override fun showDetailsFragment(radioId: String) {
+         showFragment(RadiosDetails.newInstance(radioId))
     }
 }

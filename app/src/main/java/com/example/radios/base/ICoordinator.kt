@@ -1,5 +1,5 @@
 package com.example.radios.base
 
 interface ICoordinator {
-    fun showDetailsFragment()
+    fun showDetailsFragment(radioId:String)
 }
