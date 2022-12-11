@@ -11,6 +11,7 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(radio: Radio, onItemCLicked:(String)-> Unit) {
 
+
         var mediaPlayer: android.media.MediaPlayer
         mediaPlayer = android.media.MediaPlayer()
         itemView.TVname.text = radio.name
@@ -39,6 +40,9 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 mediaPlayer.reset()
                 mediaPlayer.release()
             }
+        }
+        itemView.btnSave.setOnClickListener(){
+
         }
 
     }

@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(), ICoordinator {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showFragment(LogInFragment(),true)
-
+        
 
     }
     fun showFragment(fragment: Fragment, addAsRoot:Boolean= false){
