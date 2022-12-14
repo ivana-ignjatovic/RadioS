@@ -13,13 +13,16 @@ import com.example.radios.base.data.HttpDataHandler
 import com.example.radios.base.data.RadioParser
 import com.example.radios.base.data.Result
 import com.example.radios.base.model.Radio
+import com.example.radios.favorites.FavoritesFragment
+import com.example.radios.fragments.SignUpFragment
 import com.example.radios.radioslist.recycler.RadioRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_radio_list.*
 
+
 open class RadioListFragment : Fragment() {
 
-  lateinit var bottomNav : BottomNavigationView
+  var bottomNav : BottomNavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,35 +44,39 @@ open class RadioListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getRadios()
         //(activity as MainActivity).showFragment(RadioListFragment(), false)
+
         bottomNav = view.findViewById(R.id.bottomNav) as BottomNavigationView
-        bottomNav.setOnNavigationItemReselectedListener {
+        //bottomNav.findViewById(R.id.bottomNav)as BottomNavigationView
+        bottomNav!!.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    (activity as MainActivity).showFragment(RadioListFragment(), false)
+                    (activity as MainActivity).showFragment(SignUpFragment(), false)
                     return@setOnNavigationItemReselectedListener
                 }
                 R.id.message -> {
-                    (activity as MainActivity).showFragment(RadioListFragment(), false)
+                    (activity as MainActivity).showFragment(FavoritesFragment(), false)
                     return@setOnNavigationItemReselectedListener
                 }
                 R.id.settings -> {
-                    (activity as MainActivity).showFragment(RadioListFragment(), false)
+                    (activity as MainActivity).showFragment(SignUpFragment(), false)
                     return@setOnNavigationItemReselectedListener
+                    Log.d("Bottomee",it.itemId.toString())
                 }
             }
         }
      }
 
-    private fun setupRecyclerView(radios: List<Radio>){
+     fun setupRecyclerView(radios: List<Radio>){
         radiolist.adapter= RadioRVAdapter(radios){radio ->
             (activity as ICoordinator).showDetailsFragment(radio)
         }
         radiolist.adapter= RadioRVAdapter(radios){radio ->
             (activity as ICoordinator).showDetailsFragment(radio)
         }
+
     }
 
-    public fun getRadios(){
+     fun getRadios(){
 
         val thread = Thread(){
             val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/RS")

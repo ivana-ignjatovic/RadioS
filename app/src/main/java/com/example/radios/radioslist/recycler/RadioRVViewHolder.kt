@@ -50,7 +50,6 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             var username = LogInFragment.username.un
             var radioId = radio.id
             val rusr = RadiosUsers (username,radioId)
-            radioID.ri+=radioId
             val db = DBHelper(it.context)
             val all : List<RadiosUsers> = db.getALLFavorites()
             val favorite = db.insertFavorite(rusr)
