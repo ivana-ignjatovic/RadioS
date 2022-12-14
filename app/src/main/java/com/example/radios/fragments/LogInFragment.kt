@@ -16,6 +16,10 @@ import com.example.radios.radioslist.view.RadioListFragment
 
 
 class LogInFragment : Fragment() {
+    object username {
+    var un = ""
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +29,12 @@ class LogInFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
+
+        val db:DBHelper = DBHelper(requireContext())
+        val mydb = db.writableDatabase
+
         val signInBtn: Button = view.findViewById(R.id.buttonSignIn)
         signInBtn.setOnClickListener() {
             (activity as MainActivity).showFragment(SignUpFragment(), false)
@@ -37,17 +45,17 @@ class LogInFragment : Fragment() {
 
 
         btn_login.setOnClickListener() {
-
-            val db = DBHelper(requireContext(), null)
             val user = db.getUserById(tv_username.text.toString())
             Log.d("Log user",user.toString())
             if(user.username.toString()==tv_username.text.toString() && user.password.toString()==tv_password.text.toString())
                 {
+                    username.un=user.username
+                    db.close()
                     (activity as MainActivity).showFragment(RadioListFragment(), false)
-
                 }
             else{
                     Toast.makeText(requireContext(), "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
+                    db.close()
                 }
             }
 

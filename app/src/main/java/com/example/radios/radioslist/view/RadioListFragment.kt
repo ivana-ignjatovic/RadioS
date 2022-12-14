@@ -17,7 +17,7 @@ import com.example.radios.radioslist.recycler.RadioRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_radio_list.*
 
-class RadioListFragment : Fragment() {
+open class RadioListFragment : Fragment() {
 
   lateinit var bottomNav : BottomNavigationView
 
@@ -69,7 +69,7 @@ class RadioListFragment : Fragment() {
         }
     }
 
-    private fun getRadios(){
+    public fun getRadios(){
 
         val thread = Thread(){
             val response = HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/bycountrycodeexact/RS")
@@ -77,12 +77,9 @@ class RadioListFragment : Fragment() {
                 Log.d("response", response.data)
                 val radios = RadioParser.parse(response.data)
 
-
                 activity?.runOnUiThread(){
                     setupRecyclerView(radios)
                 }
-
-
                 //Log.d("UserLog","Radios receivde ${radios}")
             }
 

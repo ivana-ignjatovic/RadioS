@@ -1,14 +1,19 @@
 package com.example.radios.radioslist.recycler
 
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.radios.base.DBHelper
 import com.example.radios.base.model.Radio
+import com.example.radios.base.model.RadiosUsers
+import com.example.radios.fragments.LogInFragment
 import kotlinx.android.synthetic.main.item_radio.view.*
-
 
 class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-
+    object radioID {
+        var ri  = listOf("")
+    }
     fun bind(radio: Radio, onItemCLicked:(String)-> Unit) {
 
 
@@ -42,7 +47,15 @@ class RadioRVViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
         }
         itemView.btnSave.setOnClickListener(){
+            var username = LogInFragment.username.un
+            var radioId = radio.id
+            val rusr = RadiosUsers (username,radioId)
+            radioID.ri+=radioId
+            val db = DBHelper(it.context)
+            val all : List<RadiosUsers> = db.getALLFavorites()
+            val favorite = db.insertFavorite(rusr)
 
+            Log.d("Zvezda",all.get(0).radios + all.get(0).username)
         }
 
     }

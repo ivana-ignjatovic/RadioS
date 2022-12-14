@@ -1,17 +1,17 @@
 package com.example.radios.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.radios.base.model.MUser
+import androidx.fragment.app.Fragment
 import com.example.radios.R
 import com.example.radios.base.DBHelper
 import com.example.radios.base.MainActivity
+import com.example.radios.base.model.MUser
 
 class SignUpFragment : Fragment() {
 
@@ -41,14 +41,14 @@ class SignUpFragment : Fragment() {
         val tv_password = view.findViewById<TextView>(R.id.enterPassword)
         val tv_country = view.findViewById<TextView>(R.id.enterCountry)
         btn_create.setOnClickListener(){
-            val db = DBHelper(context!!, null)
+            val db = DBHelper(requireContext())
             val username = tv_username.text.toString()
             val name = tv_name.text.toString()
             val surname = tv_surname.text.toString()
             val email = tv_email.text.toString()
             val password = tv_password.text.toString()
             val country = tv_country.text.toString()
-
+          //  val radioId = ""
             val user = MUser(username,name,surname,email,password,country)
             val status = db.insertUser(user)
             if(status >-1)
