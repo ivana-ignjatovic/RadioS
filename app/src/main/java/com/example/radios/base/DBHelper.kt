@@ -83,6 +83,10 @@ class DBHelper(context: Context) :
         db.close()
         return success
     }
+    fun deleteFavorite(name:String,radio:String){
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_NAME2 WHERE $USERNAME_COL2='$name' AND $RADIOS_COL2='$radio'")
+    }
     fun deleteALLUsers() {
         val db = this.writableDatabase
         db.execSQL("DELETE  FROM $TABLE_NAME")
@@ -116,6 +120,7 @@ class DBHelper(context: Context) :
         return usrList
 
     }
+
     fun getALLUsers(): ArrayList<MUser> {
         val usrList: ArrayList<MUser> = ArrayList()
         val selectQuery = "SELECT * FROM " + TABLE_NAME

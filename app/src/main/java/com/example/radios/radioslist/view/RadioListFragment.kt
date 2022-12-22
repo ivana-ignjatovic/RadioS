@@ -14,7 +14,6 @@ import com.example.radios.base.data.RadioParser
 import com.example.radios.base.data.Result
 import com.example.radios.base.model.Radio
 import com.example.radios.favorites.FavoritesFragment
-import com.example.radios.fragments.SignUpFragment
 import com.example.radios.radioslist.recycler.RadioRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_radio_list.*
@@ -50,17 +49,14 @@ open class RadioListFragment : Fragment() {
         bottomNav!!.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    (activity as MainActivity).showFragment(SignUpFragment(), false)
+                    (activity as MainActivity).showFragment(RadioListFragment(), false)
                     return@setOnNavigationItemReselectedListener
                 }
-                R.id.message -> {
+
+                R.id.settings -> {
                     (activity as MainActivity).showFragment(FavoritesFragment(), false)
                     return@setOnNavigationItemReselectedListener
-                }
-                R.id.settings -> {
-                    (activity as MainActivity).showFragment(SignUpFragment(), false)
-                    return@setOnNavigationItemReselectedListener
-                    Log.d("Bottomee",it.itemId.toString())
+
                 }
             }
         }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.radios.R
 import com.example.radios.base.DBHelper
 import com.example.radios.base.ICoordinator
+import com.example.radios.base.MainActivity
 import com.example.radios.base.data.HttpDataHandler
 import com.example.radios.base.data.RadioParser
 import com.example.radios.base.data.Result
@@ -16,14 +17,15 @@ import com.example.radios.base.model.Radio
 import com.example.radios.base.model.RadiosUsers
 import com.example.radios.fragments.LogInFragment
 import com.example.radios.radioslist.recycler.RadioRVAdapter
+import com.example.radios.radioslist.view.RadioListFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
-
+    var bottomNav : BottomNavigationView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // bottomNav = view.findViewById(R.id.bottomNav) as BottomNavigationView
-
 
     }
     override fun onCreateView(
@@ -32,20 +34,43 @@ class FavoritesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favorites, container, false)
+       // btnSave.setBackgroundResource(R.drawable.ic_star)
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Favorite",getFavorites().toString())
+
         getFavorites()
+
+
+        bottomNav = view.findViewById(R.id.bottomNav) as BottomNavigationView
+        //bottomNav.findViewById(R.id.bottomNav)as BottomNavigationView
+        bottomNav!!.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    (activity as MainActivity).showFragment(RadioListFragment(), false)
+                    return@setOnNavigationItemReselectedListener
+                }
+
+                R.id.settings -> {
+                    (activity as MainActivity).showFragment(FavoritesFragment(), false)
+                    return@setOnNavigationItemReselectedListener
+
+                }
+            }
+        }
       //  (activity as MainActivity).showFragment(FavoritesFragment(), false)
 
     }
     fun setupRecycleView(radios: List<Radio>){
+
         favoriteslist.adapter= RadioRVAdapter(radios){radio ->
             (activity as ICoordinator).showDetailsFragment(radio)
+            (activity as MainActivity).refreshFragment(this.context,FavoritesFragment())
         }
+    //    btnSave.setBackgroundResource(R.drawable.ic_star)
 
     }
 
@@ -75,5 +100,6 @@ class FavoritesFragment : Fragment() {
         }
         thread.start()
     }
+
 
     }

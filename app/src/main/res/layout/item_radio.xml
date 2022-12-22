@@ -3,51 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="155dp"
+    android:layout_height="195dp"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="12dp"
     android:alpha="2"
-    android:background="#D5D6D6">
+    android:background="#412194">
+
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="145dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="195dp"
+        android:background="@drawable/frame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="-112dp" />
 
     <TextView
         android:id="@+id/TVname"
-        android:layout_width="375dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="380dp"
+        android:layout_height="31dp"
         android:text="Naziv stanice"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintBottom_toTopOf="@id/btnplay"
+        app:layout_constraintEnd_toEndOf="parent"
 
-
-        />
-
-    <TextView
-        android:id="@+id/country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Drzava"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
     <ImageButton
         android:id="@+id/btnplay"
-        android:layout_width="114dp"
-        android:layout_height="95dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/ic_play"
+        android:backgroundTint="#00CCC9D6"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,10 +50,12 @@
 
     <ImageButton
         android:id="@+id/btnpause"
-        android:layout_width="114dp"
-        android:layout_height="95dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/ic_pause"
+        android:backgroundTint="#00FFFFFF"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,17 +63,32 @@
 
     <ImageButton
         android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="41dp"
+        android:layout_height="37dp"
+        android:background="@drawable/ic_star3"
+        android:backgroundTint="#FFFFFF"
+
         android:contextClickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintLeft_toRightOf="@id/btnpause"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TVname"
+        app:layout_constraintTop_toBottomOf="@id/btnplay"
+        app:layout_constraintVertical_bias="0.0" />
 
-        app:layout_constraintVertical_bias="0.851"
-        app:srcCompat="@drawable/ic_2star" />
+    <ImageButton
+        android:id="@+id/btnDelete"
+
+        android:layout_width="31dp"
+        android:layout_height="31dp"
+
+        android:layout_marginTop="4dp"
+
+        android:background="@drawable/ic_trash"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btnSave"
+        app:layout_constraintTop_toBottomOf="@id/btnSave" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

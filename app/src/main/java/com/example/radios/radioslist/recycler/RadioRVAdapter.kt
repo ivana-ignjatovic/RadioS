@@ -12,12 +12,13 @@ class RadioRVAdapter(private val radios: List<Radio>, private val onItemClicked:
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioRVViewHolder =
         RadioRVViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_radio, parent, false)
+
         )
 
     override fun onBindViewHolder(holder: RadioRVViewHolder, position: Int) {
         holder.bind(radios[position], onItemClicked)
-    }
 
+    }
 
     override fun getItemCount() = radios.size
 }

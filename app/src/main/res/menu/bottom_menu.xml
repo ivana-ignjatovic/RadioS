@@ -5,10 +5,7 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
         android:title="Home" />
-    <item
-        android:id="@+id/message"
-        android:icon="@drawable/ic_search"
-        android:title="Pretrazi" />
+
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_star"
