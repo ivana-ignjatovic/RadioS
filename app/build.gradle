@@ -1,7 +1,10 @@
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+
+
 }
 
 android {
@@ -36,11 +39,17 @@ android {
     }
 }
 
+
 dependencies {
 
+  //  val nav_version = "2.5.3"
+//    classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
     //noinspection GradleCompatible,GradleCompatible
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     //noinspection GradleCompatible
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     //noinspection GradleCompatible,GradleCompatible
@@ -51,7 +60,11 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     // androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation "androidx.car.app:app-projected:1.1.0"
+    //testImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    testImplementation "org.mockito:mockito-inline:4.0.0"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
     implementation "androidx.media2:media2-session:1.2.0"
@@ -59,23 +72,17 @@ dependencies {
     implementation "androidx.media2:media2-player:1.2.0"
     implementation "androidx.contentpager:contentpager:1.0.0"
     implementation "com.google.android.gms:play-services-contextmanager:9.4.0"
+    implementation 'com.google.code.gson:gson:2.10'
+    testImplementation 'org.robolectric:robolectric:3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0’ '
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1"
     implementation"androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
-
-//    // dependency for exoplayer
-//   // implementation "com.google.android.exoplayer:exoplayer:r2.4.0"
-//    implementation "androidx.media2:media2-exoplayer:1.2.1"
-//    implementation "androidx.media3:media3-exoplayer-dash:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer-hls:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer-ima:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer-rtsp:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer-smoothstreaming:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer-workmanager:1.0.0-beta03"
-//    implementation "androidx.media3:media3-exoplayer:1.0.0-beta03"
-//    implementation "androidx.media3:media3-ui:1.0.0-beta03"
-//    implementation "androidx.media3:media3-ui-leanback:1.0.0-beta03"
-//    implementation "com.google.android.exoplayer:exoplayer-ui:2.18.2"
-//    //implementation "com.google.mediapipe:tasks-audio:0.1.0-alpha-3"
-
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.7.21"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-annotations-common:1.7.0"
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
 
 }

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">">
+
+    <!--        android:onClick="android:icon ='@drawable/home' "-->
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/firstFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Home"
 
+        />
     <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_star"
-        android:title="Sacuvano" />
+        android:id="@+id/secondFragment"
+        android:icon="@drawable/ic_baseline_star_rate_24"
+        android:title="Sacuvano"
+
+        />
+
 
 </menu>

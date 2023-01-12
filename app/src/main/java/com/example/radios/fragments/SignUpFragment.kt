@@ -1,6 +1,7 @@
 package com.example.radios.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,26 +40,40 @@ class SignUpFragment : Fragment() {
         val tv_email = view.findViewById<TextView>(R.id.enterEmail)
         val tv_username = view.findViewById<TextView>(R.id.enterUsername)
         val tv_password = view.findViewById<TextView>(R.id.enterPassword)
-        val tv_country = view.findViewById<TextView>(R.id.enterCountry)
+
         btn_create.setOnClickListener(){
-            val db = DBHelper(requireContext())
+
+
             val username = tv_username.text.toString()
             val name = tv_name.text.toString()
             val surname = tv_surname.text.toString()
             val email = tv_email.text.toString()
             val password = tv_password.text.toString()
-            val country = tv_country.text.toString()
+
           //  val radioId = ""
-            val user = MUser(username,name,surname,email,password,country)
+            val user : MUser = MUser(username,name,surname,email,password)
+            val db = DBHelper(requireContext())
+            signUpUser(user,db)
+        }
+
+    }
+
+    fun signUpUser(user : MUser ,db:DBHelper){
+        val searchUser = db.getUserById(user.username)
+        if(searchUser.username=="")
+        {
+            val user = MUser(user.username,user.name,user.surname,user.email,user.password)
+
             val status = db.insertUser(user)
             if(status >-1)
             {
-                Toast.makeText(context!!, "Korisnik " + name +" " + surname + " je dodat u bazu podataka", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Korisnik " + user.name +" " + user.surname + " je dodat u bazu podataka", Toast.LENGTH_LONG).show()
+                (activity as MainActivity).showFragment(LogInFragment())
             }else{
-                Toast.makeText(context!!, "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Doslo je do greske prilikom unosa!", Toast.LENGTH_LONG).show()
             }
         }
-
+        else throw Exception("Vec postoji korisnik sa unetim korisnickiim imenom!")
     }
 
 

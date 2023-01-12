@@ -20,8 +20,7 @@ class DBHelper(context: Context) :
                 "$NAME_COl TEXT NOT NULL, " +
                 "$SURNAME_COl TEXT NOT NULL," +
                 "$EMAIL_COl TEXT NOT NULL, " +
-                "$PASSWORD_COl TEXT NOT NULL, " +
-                "$COUNTRY_COL TEXT )")
+                "$PASSWORD_COl TEXT NOT NULL)")
         db.execSQL(query)
         Log.d("SQL 1 ",query)
         val query2= ("CREATE TABLE $TABLE_NAME2 ($USERNAME_COL2 TEXT, $RADIOS_COL2 TEXT, PRIMARY KEY($USERNAME_COL2, $RADIOS_COL2))");
@@ -51,7 +50,7 @@ class DBHelper(context: Context) :
         val SURNAME_COl = "surname"
         val EMAIL_COl = "email"
         val PASSWORD_COl = "password"
-        val COUNTRY_COL = "country"
+
 
         val TABLE_NAME2 = "Favorites"
         val USERNAME_COL2 = "username"
@@ -68,7 +67,6 @@ class DBHelper(context: Context) :
         values.put(SURNAME_COl, usr.surname)
         values.put(EMAIL_COl, usr.email)
         values.put(PASSWORD_COl, usr.password)
-        values.put(COUNTRY_COL, usr.country)
         val success = db.insert(TABLE_NAME, null, values)
         db.close()
         return success
@@ -157,14 +155,30 @@ class DBHelper(context: Context) :
                // val index6 : Int = cursor.getColumnIndex("radios")
                // radioId = cursor.getString(index6)
 
-                val usr = MUser(username, name, surname, email, password, country)
+                val usr = MUser(username, name, surname, email, password)
                 usrList.add(usr)
             } while (cursor.moveToNext())
         }
         return usrList
 
     }
+    fun getFavoriteById(usern: String,radio: String ):RadiosUsers{
+        val selectQuery = "SELECT * FROM $TABLE_NAME2 WHERE username='$usern'AND radios='$radio'"
+        val db = this.readableDatabase
+        var username: String = ""
+        var radio: String = ""
+        val cursor: Cursor?
+        cursor = db.rawQuery(selectQuery, null)
+        if (cursor.moveToFirst()) {
+            val index0: Int = cursor.getColumnIndex("username")
+            username = cursor.getString(index0)
+            val index1: Int = cursor.getColumnIndex("radios")
+            radio = cursor.getString(index1)
+        }
+        val fav = RadiosUsers(username,radio)
+        return fav
 
+    }
     fun getUserById(usern: String): MUser {
         val selectQuery = "SELECT * FROM $TABLE_NAME WHERE username='$usern'"
         val db = this.readableDatabase
@@ -188,14 +202,14 @@ class DBHelper(context: Context) :
             email = cursor.getString(index3)
             val index4: Int = cursor.getColumnIndex("password")
             password = cursor.getString(index4)
-            val index5: Int = cursor.getColumnIndex("country")
-            country = cursor.getString(index5)
+
   //          val index6: Int = cursor.getColumnIndex("radioId")
 //            radioId = cursor.getString(index6)
 
         }
-        Log.d("Errod", "Doslo je do greske" )
-        val usr = MUser(username, name, surname, email, password, country)
+
+        Log.d("Error", "Doslo je do greske" )
+        val usr = MUser(username, name, surname, email, password )
         return usr
 
     }

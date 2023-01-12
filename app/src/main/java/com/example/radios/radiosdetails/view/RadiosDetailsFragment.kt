@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 import com.example.radios.R
 import com.example.radios.base.data.HttpDataHandler
 import com.example.radios.base.data.RadioParser
 import com.example.radios.base.data.Result
 import com.example.radios.base.model.Radio
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_radios_details.*
 
 class RadiosDetails : Fragment() {
@@ -33,6 +35,10 @@ class RadiosDetails : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         radioId = arguments?.getString(RADIO_ID_KEY) ?: radioId
+        val bottNav = view?.findViewById<View>(R.id.bottomNavigationView)
+        bottNav?.visibility = View.GONE
+
+
     }
 
     override fun onCreateView(
@@ -47,6 +53,7 @@ class RadiosDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getRadio()
+        //bottomNavigationView.visibility = View.GONE
 
     }
 
@@ -78,13 +85,7 @@ class RadiosDetails : Fragment() {
             val response =
                 HttpDataHandler.getResponse("http://de1.api.radio-browser.info/json/stations/byuuid/" + radioId)
             if (response is Result.Success) {
-
                 val radio = RadioParser.parse2(response.data)
-                //println("Ikaa"+radio)
-                //   for(i in radios.indices){
-                ///     if(radios.get(i).id==radioId)
-                //}
-
                 activity?.runOnUiThread() {
                     setupView(radio)
                 }

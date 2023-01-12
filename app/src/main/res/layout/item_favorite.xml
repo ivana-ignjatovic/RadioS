@@ -65,7 +65,7 @@
         android:id="@+id/btnSave"
         android:layout_width="41dp"
         android:layout_height="37dp"
-        android:background="@drawable/ic_star3"
+        android:background="@drawable/ic_star"
         android:backgroundTint="#FFFFFF"
 
         android:contextClickable="true"
@@ -86,7 +86,6 @@
 
         android:background="@drawable/ic_trash"
         android:backgroundTint="#FFFFFF"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btnSave"
         app:layout_constraintTop_toBottomOf="@id/btnSave" />
