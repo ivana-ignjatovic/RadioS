@@ -37,8 +37,6 @@ class RadiosDetails : Fragment() {
         radioId = arguments?.getString(RADIO_ID_KEY) ?: radioId
         val bottNav = view?.findViewById<View>(R.id.bottomNavigationView)
         bottNav?.visibility = View.GONE
-
-
     }
 
     override fun onCreateView(
@@ -46,15 +44,12 @@ class RadiosDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_radios_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getRadio()
-        //bottomNavigationView.visibility = View.GONE
-
     }
 
     private fun setupView(radio: Radio) {
@@ -70,11 +65,11 @@ class RadiosDetails : Fragment() {
             Glide.with(this).load(radio.favicon).into(favicon)
         }
         votes.text = radio.votes.toString()
-       // homepage.setOnClickListener()
+        // homepage.setOnClickListener()
         var url = radio.homepage
-        val i= Intent(Intent.ACTION_VIEW)
+        val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
-        homepage.setOnClickListener(){
+        homepage.setOnClickListener() {
             startActivity(i)
         }
     }
@@ -91,8 +86,6 @@ class RadiosDetails : Fragment() {
                 }
             }
         }.start()
-
-
     }
 }
 

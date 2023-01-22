@@ -1,4 +1,4 @@
-package com.example.radios.fragments
+package com.example.radios.registration
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -18,8 +16,6 @@ import com.example.radios.R
 import com.example.radios.base.DBHelper
 import com.example.radios.base.MainActivity
 import com.example.radios.databinding.ActivityMainBinding
-import com.example.radios.radioslist.view.RadioListFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class LogInFragment : Fragment() {
@@ -56,12 +52,21 @@ class LogInFragment : Fragment() {
         btn_login.setOnClickListener() {
             val user = db.getUserById(tv_username.text.toString())
             Log.d("Log user", user.toString())
-            if (user.username.toString() == tv_username.text.toString() && user.password.toString() == tv_password.text.toString()) {
+            if(tv_username.text.toString()=="" || tv_password.text.toString()==""){
+                Toast.makeText(
+                    requireContext(),
+                    "Morate uneti sva polja",
+                    Toast.LENGTH_LONG).show()
+            }
+           else if(tv_username.text.toString()=="" && tv_password.text.toString()==""){
+                Toast.makeText(
+                    requireContext(),
+                    "Morate uneti sva polja",
+                    Toast.LENGTH_LONG).show()
+            }
+            else if (user.username == tv_username.text.toString() && user.password == tv_password.text.toString()) {
                 username.un = user.username
                 db.close()
-
-                // activity_main_nav_host_fragment.setMenuVisibility(true)
-
                 binding = ActivityMainBinding.inflate(layoutInflater)
                 (activity as MainActivity).setContentView(binding.root)
                 navController = Navigation.findNavController(
@@ -69,13 +74,9 @@ class LogInFragment : Fragment() {
                     R.id.activity_main_nav_host_fragment
                 )
                 NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
-                //(activity as MainActivity).showFragment(RadioListFragment(), false)
-//                val transaction = parentFragmentManager.beginTransaction()
-//                // transaction.replace(R.id.Constraint_Layoutt, fragment)
-//                transaction.add(activity_main_nav_host_fragment)
-//                transaction.addToBackStack(null)
-//                transaction.commit()
-            } else {
+
+            }
+            else {
                 Toast.makeText(
                     requireContext(),
                     "Doslo je do greske prilikom unosa!",
@@ -84,7 +85,6 @@ class LogInFragment : Fragment() {
                 db.close()
             }
         }
-
     }
 
 

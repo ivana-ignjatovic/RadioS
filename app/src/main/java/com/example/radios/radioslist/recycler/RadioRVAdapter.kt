@@ -26,7 +26,6 @@ class RadioRVAdapter(
             return RadioRVViewHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_favorite, parent, false),
                 this.myFrag
-
             )
         }
 

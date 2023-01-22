@@ -7,7 +7,8 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="12dp"
     android:alpha="2"
-    android:background="#412194">
+    android:background="#412194"
+   >
 
 
     <View
@@ -42,11 +43,10 @@
         android:layout_marginEnd="188dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/ic_play"
-        android:backgroundTint="#00CCC9D6"
+        android:backgroundTint="#FFFFFF"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/playbutton" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/btnpause"
@@ -55,11 +55,9 @@
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="72dp"
         android:background="@drawable/ic_pause"
-        android:backgroundTint="#00FFFFFF"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/pause" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/btnSave"
@@ -90,6 +88,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/btnSave"
         app:layout_constraintTop_toBottomOf="@id/btnSave" />
+
+    <TextView
+        android:id="@+id/TVurl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="127dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

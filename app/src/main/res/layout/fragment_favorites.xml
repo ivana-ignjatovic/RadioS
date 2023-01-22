@@ -5,7 +5,7 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C3412194"
-        tools:context=".favorites.FavoritesFragment">
+        tools:context=".radioslist.view.FavoritesFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,37 +1,33 @@
-package com.example.radios.favorites
+package com.example.radios.radioslist.view
 
-import android.content.Context
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.radios.R
 import com.example.radios.base.DBHelper
 import com.example.radios.base.ICoordinator
-import com.example.radios.base.MainActivity
 import com.example.radios.base.data.HttpDataHandler
 import com.example.radios.base.data.RadioParser
 import com.example.radios.base.data.Result
 import com.example.radios.base.model.Radio
 import com.example.radios.base.model.RadiosUsers
-import com.example.radios.fragments.LogInFragment
-import com.example.radios.radiosdetails.view.RadiosDetails
+import com.example.radios.registration.LogInFragment
 import com.example.radios.radioslist.recycler.RadioRVAdapter
-import com.example.radios.radioslist.view.RadioListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_favorites.*
-import kotlinx.android.synthetic.main.item_radio.*
-import kotlinx.android.synthetic.main.item_radio.view.*
 
 class FavoritesFragment : Fragment() {
-    lateinit var bottomNav : BottomNavigationView
+    lateinit var mediaPlayer: android.media.MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mediaPlayer = android.media.MediaPlayer()
+        mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,20 +67,38 @@ class FavoritesFragment : Fragment() {
             if (response is Result.Success){
                 Log.d("response", response.data)
                 var radios = RadioParser.parse(response.data)
-               // lateinit var favorites: List <Radio>
                     val favId:List<String> = favbyyser.map { it.radios}
                    radios= radios.filter { favId.contains(it.id)}
 
-                //Log.d("IsEmpty",favorites.toString())
                 activity?.runOnUiThread(){
                     setupRecycleView(radios)
                 }
-
-                //Log.d("UserLog","Radios receivde ${radios}")
             }
 
         }
         thread.start()
+    }
+    fun setAndPlay(url:String){
+        pause()
+        mediaPlayer = android.media.MediaPlayer()
+        mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        mediaPlayer.setOnPreparedListener(object : MediaPlayer.OnPreparedListener {
+            override fun onPrepared(mp: MediaPlayer) {
+                mp.start()
+            }
+        })
+        mediaPlayer.setDataSource(url)
+        mediaPlayer.prepareAsync()
+    }
+    fun pause(){
+        if(mediaPlayer.isPlaying){
+            mediaPlayer.pause()
+            mediaPlayer.reset()
+            mediaPlayer.release()
+        }
+        else{
+            Toast.makeText(this.context, "Nije pustena nijedna radio stanica!", Toast.LENGTH_LONG).show()
+        }
     }
 
 

@@ -1,7 +1,6 @@
-package com.example.radios.fragments
+package com.example.radios.registration
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

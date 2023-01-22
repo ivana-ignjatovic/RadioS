@@ -14,7 +14,7 @@
         tools:layout="@layout/fragment_radio_list" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.radios.favorites.FavoritesFragment"
+        android:name="com.example.radios.radioslist.view.FavoritesFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_favorites" />
 
