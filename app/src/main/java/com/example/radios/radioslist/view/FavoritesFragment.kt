@@ -96,9 +96,7 @@ class FavoritesFragment : Fragment() {
             mediaPlayer.reset()
             mediaPlayer.release()
         }
-        else{
-            Toast.makeText(this.context, "Nije pustena nijedna radio stanica!", Toast.LENGTH_LONG).show()
-        }
+
     }
 
 

@@ -82,13 +82,10 @@ open class RadioListFragment : Fragment() {
     }
 
     fun pause() {
+
         if (mediaPlayer.isPlaying) {
             mediaPlayer.pause()
             mediaPlayer.reset()
-            mediaPlayer.release()
-        } else {
-            Toast.makeText(this.context, "Nije pustena nijedna radio stanica!", Toast.LENGTH_LONG)
-                .show()
         }
     }
 }
