@@ -7,7 +7,7 @@ Pored toga, korisnik ima mogucnost da sacuva svoje omiljene stanice, kao i da sa
 Kako se koristi
 Kako bi korisnik mogao da cuva svoje omiljene radio stranice potrebno je registrovati se:
 <p align="center">
-  <img width="460" height="300" src="(https://user-images.githubusercontent.com/72694696/221599786-af08e09b-9777-44cf-bed7-5178e45fc97c.JPG)">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/72694696/221599786-af08e09b-9777-44cf-bed7-5178e45fc97c.JPG">
 </p>
 
 Nakon prijave korisnik dobija sledeci prikaz odakle moze pustati razlicite radio stanice, a klikom na dugme u obliku zvezdice moze sacuvati radio stanicu.
